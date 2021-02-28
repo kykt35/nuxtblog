@@ -49,7 +49,7 @@ html {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 30px auto 30px;
   width: 800px;
 }
 </style>
