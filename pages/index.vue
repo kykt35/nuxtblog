@@ -1,5 +1,8 @@
 <template>
-  <div>トップページ</div>
+  <div>
+    <div>トップページ</div>
+    <nuxt-link to="/articles">記事一覧</nuxt-link>
+  </div>
 </template>
 
 <script>
