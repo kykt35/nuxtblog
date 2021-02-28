@@ -1,23 +1,24 @@
 <template>
-  <div class="article_box">
-    <div class="title">{{ title }}</div>
-    <div class="description">
-      {{ description }}
+  <div>
+    <div class="article_box" v-if="article">
+      <div class="title">{{ article.title }}</div>
+      <div class="description">
+        {{ article.description }}
+      </div>
     </div>
+    <div class="article_box" v-else>記事が見つかりません</div>
   </div>
 </template>
 
 <script>
+import { articles } from '../../lib/articles_data'
+
 export default {
   name: 'article_page',
+  asyncData({ params }) {
+    const article = articles.find((article) => article.id === Number(params.id))
 
-  props: {},
-  data() {
-    return {
-      title: 'タイトル',
-      description:
-        'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
-    }
+    return { article }
   },
 }
 </script>
