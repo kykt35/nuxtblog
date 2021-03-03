@@ -25,10 +25,14 @@ export default {
       text: '',
     }
   },
+
   methods: {
-    createArticle: (e) => {
+    createArticle(e) {
       e.preventDefault()
-      console.log('create article')
+      this.$store.dispatch('addArticle', {
+        title: this.title,
+        text: this.text,
+      })
     },
   },
 }
