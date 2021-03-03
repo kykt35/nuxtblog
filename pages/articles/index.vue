@@ -1,9 +1,9 @@
 <template>
   <div class="article_box">
     <div class="title">記事一覧</div>
-
-    <div class="article_card" v-for="article in articles" :key="article.id">
-      <nuxt-link to="articles/1">{{ article.title }}</nuxt-link>
+    <nuxt-link to="articles/new">新規投稿</nuxt-link>
+    <div v-for="article in articles" :key="article.id" class="article_card">
+      <nuxt-link :to="'articles/' + article.id">{{ article.title }}</nuxt-link>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 import { articles } from '../../lib/articles_data'
 
 export default {
-  name: 'articles_index_page',
+  name: 'ArticlesPndexPage',
   asyncData() {
     return { articles }
   },
