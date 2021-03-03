@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div class="article_box" v-if="article">
+    <div v-if="article" class="article_box">
       <div class="title">{{ article.title }}</div>
-      <div class="description">
-        {{ article.description }}
+      <div class="text">
+        {{ article.text }}
       </div>
     </div>
-    <div class="article_box" v-else>記事が見つかりません</div>
+    <div v-else class="article_box">記事が見つかりません</div>
   </div>
 </template>
 
 <script>
-import { articles } from '../../lib/articles_data'
-
 export default {
-  name: 'article_page',
-  asyncData({ params }) {
-    const article = articles.find((article) => article.id === Number(params.id))
-
-    return { article }
+  name: 'ArticlePage',
+  computed: {
+    article() {
+      return this.$store.state.articles.find(
+        (article) => article.id === Number(this.$route.params.id)
+      )
+    },
   },
 }
 </script>
@@ -31,7 +31,7 @@ export default {
   font-size: 28px;
   margin-bottom: 30px;
 }
-.description {
+.text {
   font-size: 12px;
 }
 </style>
