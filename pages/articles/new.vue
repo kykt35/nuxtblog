@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'ArticleNewPage',
   data() {
@@ -25,10 +27,21 @@ export default {
       text: '',
     }
   },
+  computed: {
+    ...mapGetters(['articles']),
+  },
   methods: {
-    createArticle: (e) => {
+    newArticleId() {
+      return Math.max(this.articles.map((article) => article.id)) + 1
+    },
+    createArticle(e) {
       e.preventDefault()
-      console.log('create article')
+      this.$store.dispatch('addArticle', {
+        id: this.newArticleId(),
+        title: this.title,
+        text: this.text,
+      })
+      this.$router.push('/articles')
     },
   },
 }
