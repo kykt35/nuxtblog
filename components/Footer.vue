@@ -1,6 +1,6 @@
 <template>
   <footer class="root">
-    <div class="copyright">© 2018 Copyright Text</div>
+    <div class="copyright"><div>© 2021 Copyright</div></div>
   </footer>
 </template>
 
@@ -13,7 +13,6 @@
 .copyright {
   color: #fff;
   font-size: 16px;
-  width: 200px;
   height: 100%;
   display: flex;
   align-items: center;
